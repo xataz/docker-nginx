@@ -1,0 +1,37 @@
+#!/bin/sh
+
+addgroup -g ${GID} web && adduser -H -s /bin/sh -D -G web -u ${UID} web
+
+mkdir -p /sites-enabled
+mkdir -p /nginx /nginx/log /nginx/run /nginx/sites-enabled /nginx/www/html
+
+if [ "$(ls /nginx/sites-enabled)" == "" ];then
+    echo "
+    server {
+	listen 8080;
+	    root /nginx/www/html;
+        index index.html;
+    }
+    " > /nginx/sites-enabled/default.conf
+fi
+
+if [ ! -e /nginx/www/html/index.php ];then
+mkdir -p /nginx/www/html
+echo "
+    <!DOCTYPE html>
+    <head><title>Alpine Docker and Nginx</title></head>
+    <h1>Nginx $(nginx -v 2>&1 | cut -d/ -f2) on $(hostname)</h1>
+    <p>
+	Nginx running inside a $(du -m / | sort -n | tail -1 | awk '{print $1}')MB Alpine Docker Container.<br>
+    </p>
+" > /nginx/www/html/index.html
+fi
+
+
+chown -R web:web /nginx /etc/s6.d
+
+if [ $# -gt 0 ]; then
+    exec su-exec web:web "$@"
+else
+    exec su-exec web:web /bin/s6-svscan /etc/s6.d    
+fi
