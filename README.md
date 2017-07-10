@@ -4,7 +4,7 @@
 > If you don't trust, you can build yourself.
 
 ## Tag available
-* latest, mainline, 1.13.1, 1.13 [(Dockerfile)](https://github.com/xataz/dockerfiles/blob/master/mginx/mainline/Dockerfile)
+* latest, mainline, 1.13.2, 1.13 [(Dockerfile)](https://github.com/xataz/dockerfiles/blob/master/mginx/mainline/Dockerfile)
 * stable, 1.12.0, 1.12 [(Dockerfile)](https://github.com/xataz/dockerfiles/blob/master/mginx/stable/Dockerfile)
 
 ## Description
