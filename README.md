@@ -4,8 +4,8 @@
 > If you don't trust, you can build yourself.
 
 ## Tag available
-* latest, mainline, 1.13.2, 1.13 [(Dockerfile)](https://github.com/xataz/dockerfiles/blob/master/mginx/mainline/Dockerfile)
-* stable, 1.12.0, 1.12 [(Dockerfile)](https://github.com/xataz/dockerfiles/blob/master/mginx/stable/Dockerfile)
+* latest, mainline, 1.13.4, 1.13 [(Dockerfile)](https://github.com/xataz/dockerfiles/blob/master/mginx/mainline/Dockerfile)
+* stable, 1.12.1, 1.12 [(Dockerfile)](https://github.com/xataz/dockerfiles/blob/master/mginx/stable/Dockerfile)
 
 ## Description
 What is [Nginx](http://nginx.org)?
