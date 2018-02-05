@@ -2,8 +2,6 @@
 
 NGINX_MAINLINE_VERSION=$(grep "NGINX_VER=" mainline/Dockerfile | cut -d"=" -f2)
 NEW_NGINX_MAINLINE_VERSION=$(curl http://nginx.org/en/download.html 2> /dev/null | sed 's|>|>\n|g' | grep '^<a href="/download/nginx-' | head -1 | sed 's|.*nginx-\(.*\).tar.gz.*|\1|')
-NGINX_STABLE_VERSION=$(grep "NGINX_VER=" stable/Dockerfile | cut -d"=" -f2)
-NEW_NGINX_STABLE_VERSION=$(curl http://nginx.org/en/download.html 2> /dev/null | sed 's|>|>\n|g' | grep '^<a href="/download/nginx-' | head -3 | tail -1 | sed 's|.*nginx-\(.*\).tar.gz.*|\1|')
 
 
 f_gen_tag() {
@@ -33,11 +31,4 @@ if [ "${NGINX_MAINLINE_VERSION}" != "${NEW_NGINX_MAINLINE_VERSION}" ]; then
     f_gen_tag ${NEW_NGINX_MAINLINE_VERSION} "latest mainline"
     f_maj_dockerfile "mainline" ${NEW_NGINX_MAINLINE_VERSION}
     f_maj_readme "mainline"
-fi
-
-if [ "${NGINX_STABLE_VERSION}" != "${NEW_NGINX_STABLE_VERSION}" ]; then
-    echo "Update nginx stable to ${NEW_NGINX_STABLE_VERSION}"
-    f_gen_tag ${NEW_NGINX_STABLE_VERSION} "stable"
-    f_maj_dockerfile "stable" ${NEW_NGINX_STABLE_VERSION}
-    f_maj_readme "stable"
 fi
