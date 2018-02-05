@@ -19,4 +19,4 @@ pipeline:
       - /home/xataz/.docker/config.json:/docker/.docker/config.json
     when:
       branch: master
-  event: [push, tag, deployment]
+      event: [push, tag, deployment]
