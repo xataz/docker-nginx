@@ -1,11 +1,11 @@
 FROM xataz/alpine:3.7
 
 LABEL Description="nginx based on alpine" \
-      tags="latest 1.13.11 1.13" \
+      tags="latest 1.13.12 1.13" \
       maintainer="xataz <https://github.com/xataz>" \
-      build_ver="201804060431"
+      build_ver="201804110600"
 
-ARG NGINX_VER=1.13.11
+ARG NGINX_VER=1.13.12
 ARG NGINX_GPG="B0F4253373F8F6F510D42178520A9993A1C052F8"
 ARG BUILD_CORES
 ARG NGINX_CONF="--prefix=/nginx \
