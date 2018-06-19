@@ -3,7 +3,7 @@ FROM xataz/alpine:3.7
 LABEL Description="nginx based on alpine" \
       tags="latest 1.15.0 1.15" \
       maintainer="xataz <https://github.com/xataz>" \
-      build_ver="201806070432"
+      build_ver="201806190431"
 
 ARG NGINX_VER=1.15.0
 ARG NGINX_GPG="B0F4253373F8F6F510D42178520A9993A1C052F8"
