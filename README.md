@@ -4,7 +4,7 @@
 > If you don't trust, you can build yourself.
 
 ## Tag available
-* latest, 1.15.0, 1.15 [(Dockerfile)](https://github.com/xataz/docker-nginx/blob/master/Dockerfile)
+* latest, 1.15.7, 1.15 [(Dockerfile)](https://github.com/xataz/docker-nginx/blob/master/Dockerfile)
 
 ## Description
 What is [Nginx](http://nginx.org)?
