@@ -1,11 +1,11 @@
-FROM xataz/alpine:3.7
+FROM xataz/alpine:3.8
 
 LABEL Description="nginx based on alpine" \
-      tags="latest 1.15.0 1.15" \
+      tags="latest 1.15.7 1.15" \
       maintainer="xataz <https://github.com/xataz>" \
-      build_ver="201806190431"
+      build_ver="201812021330"
 
-ARG NGINX_VER=1.15.0
+ARG NGINX_VER=1.15.7
 ARG NGINX_GPG="B0F4253373F8F6F510D42178520A9993A1C052F8"
 ARG BUILD_CORES
 ARG NGINX_CONF="--prefix=/nginx \
@@ -55,7 +55,7 @@ RUN export BUILD_DEPS="build-base \
     && cd /tmp \
     && wget http://nginx.org/download/nginx-${NGINX_VER}.tar.gz \
     && wget http://nginx.org/download/nginx-${NGINX_VER}.tar.gz.asc \
-    && gpg --keyserver ha.pool.sks-keyservers.net --recv-keys "$NGINX_GPG" \
+    && gpg --keyserver pool.sks-keyservers.net --recv-keys "$NGINX_GPG" \
 	&& gpg --batch --verify nginx-${NGINX_VER}.tar.gz.asc nginx-${NGINX_VER}.tar.gz \
     && tar xzf nginx-${NGINX_VER}.tar.gz \
     && cd /tmp/nginx-${NGINX_VER} \
