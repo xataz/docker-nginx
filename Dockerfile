@@ -1,4 +1,4 @@
-FROM xataz/alpine:3.8
+FROM alpine:3.8
 
 LABEL Description="nginx based on alpine" \
       tags="latest 1.15.7 1.15" \
@@ -39,14 +39,14 @@ ARG NGINX_CONF="--prefix=/nginx \
 ENV UID=991 \
     GID=991
 
-RUN export BUILD_DEPS="build-base \
+RUN NB_CORES=${BUILD_CORES-$(grep -c "processor" /proc/cpuinfo)} \
+    && apk add --update --no-cache --virtual .deps build-base \
                     libressl-dev \
                     pcre-dev \
                     zlib-dev \
                     wget \
-                    gnupg " \
-    && NB_CORES=${BUILD_CORES-$(grep -c "processor" /proc/cpuinfo)} \
-    && apk add -U ${BUILD_DEPS} \
+                    gnupg \
+    && apk add --no-cache \
                 s6 \
                 su-exec \
                 libressl \
@@ -62,7 +62,7 @@ RUN export BUILD_DEPS="build-base \
     && ./configure ${NGINX_CONF} \            
     && make -j ${NB_CORES} \
     && make install \
-    && apk del ${BUILD_DEPS} \
+    && apk del --no-cache .deps \
     && rm -rf /tmp/* /var/cache/apk/*
 
 COPY rootfs /
